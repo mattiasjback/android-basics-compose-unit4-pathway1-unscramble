@@ -59,9 +59,11 @@ class GameViewModel : ViewModel() {
 
     fun checkUserGuess() {
 
-        if (userGuess.equals("", true)) {
+        if (userGuess.equals(currentWord, true)) {
+            _uiState.update { currentState ->
+                currentState.copy(isGuessedWordWrong = false)
+            }
         } else {
-            // User's guess is wrong, show an error
             _uiState.update { currentState ->
                 currentState.copy(isGuessedWordWrong = true)
             }

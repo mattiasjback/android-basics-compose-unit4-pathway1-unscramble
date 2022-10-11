@@ -145,7 +145,7 @@ fun GameLayout(
                     Text(stringResource(R.string.enter_your_word))
                 }
             },
-            isError = false,
+            isError = isGuessWrong,
             keyboardOptions = KeyboardOptions.Default.copy(
                 imeAction = ImeAction.Done
             ),
