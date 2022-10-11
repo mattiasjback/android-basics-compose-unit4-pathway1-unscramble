@@ -52,7 +52,10 @@ fun GameScreen(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
 
-        GameStatus()
+        GameStatus(
+            score = gameUiState.score,
+            wordCount = gameUiState.currentWordCount
+        )
         GameLayout(
             currentScrambledWord = gameUiState.currentScrambledWord,
             isGuessWrong = gameUiState.isGuessedWordWrong,
@@ -89,7 +92,11 @@ fun GameScreen(
 }
 
 @Composable
-fun GameStatus(modifier: Modifier = Modifier) {
+fun GameStatus(
+    modifier: Modifier = Modifier,
+    score: Int,
+    wordCount: Int
+) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -97,14 +104,14 @@ fun GameStatus(modifier: Modifier = Modifier) {
             .size(48.dp),
     ) {
         Text(
-            text = stringResource(R.string.word_count, 0),
+            text = stringResource(R.string.word_count, wordCount),
             fontSize = 18.sp,
         )
         Text(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.End),
-            text = stringResource(R.string.score, 0),
+            text = stringResource(R.string.score, score),
             fontSize = 18.sp,
         )
     }
