@@ -22,7 +22,7 @@ class GameViewModel: ViewModel() {
         val randomWord = allWords.random()
 
         if(usedWords.contains(randomWord)) {
-            pickRandomWordAndShuffle()
+            return pickRandomWordAndShuffle()
         } else {
             usedWords.add(randomWord)
             return shuffleWord(randomWord)
@@ -33,11 +33,11 @@ class GameViewModel: ViewModel() {
         val temp = word.toCharArray()
         temp.shuffle()
 
-        if(temp.toString() == word) {
+        while(String(temp) == word) {
             shuffleWord(word)
-        } else {
-            return temp.toString()
         }
+
+        return String(temp)
     }
 
     private fun resetGame() {
